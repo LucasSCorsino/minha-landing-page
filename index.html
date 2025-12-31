@@ -1,0 +1,431 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>LCS.Pages | Landing Pages de Alta Conversão</title>
+    
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+
+    <style>
+        /* --- 1. VARIÁVEIS DE LUXO --- */
+        :root {
+            --bg-body: #050507;      /* Preto profundo */
+            --bg-card: #0f111a;      /* Cinza muito escuro para cartões */
+            --primary: #5b6cf9;      /* Azul "Blurple" moderno (tecnologia) */
+            --accent: #ffffff;       /* Branco puro para destaques */
+            --text-gray: #a1a1aa;    /* Cinza metálico para textos longos */
+            --gradient: linear-gradient(90deg, #5b6cf9 0%, #9d4edd 100%);
+            --glass: rgba(255, 255, 255, 0.03);
+            --border: rgba(255, 255, 255, 0.08);
+        }
+
+        /* --- 2. RESET E BASE --- */
+        * { margin: 0; padding: 0; box-sizing: border-box; }
+        
+        html { scroll-behavior: smooth; }
+
+        body {
+            background-color: var(--bg-body);
+            color: var(--accent);
+            font-family: 'Outfit', sans-serif;
+            overflow-x: hidden;
+            line-height: 1.6;
+        }
+
+        /* Fundo com efeito de luz ambiente (Glow) */
+        body::before {
+            content: '';
+            position: fixed;
+            top: -20%;
+            left: -10%;
+            width: 600px;
+            height: 600px;
+            background: var(--primary);
+            filter: blur(200px);
+            opacity: 0.15;
+            z-index: -1;
+            border-radius: 50%;
+        }
+
+        /* --- 3. UTILITÁRIOS --- */
+        .container { max-width: 1200px; margin: 0 auto; padding: 0 24px; }
+        
+        /* Tipografia de Impacto */
+        h1, h2, h3 { line-height: 1.1; letter-spacing: -0.03em; }
+        .text-gradient {
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* Botão Premium */
+        .btn {
+            display: inline-block;
+            padding: 16px 32px;
+            background: var(--accent);
+            color: var(--bg-body);
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.4s ease;
+            font-size: 1rem;
+            position: relative;
+            overflow: hidden;
+            border: 1px solid transparent;
+        }
+        .btn:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 30px rgba(91, 108, 249, 0.4);
+        }
+        .btn-outline {
+            background: transparent;
+            color: var(--accent);
+            border: 1px solid rgba(255,255,255,0.2);
+        }
+        .btn-outline:hover {
+            border-color: var(--primary);
+            background: rgba(91, 108, 249, 0.1);
+        }
+
+        /* --- 4. HEADER --- */
+        header {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 20px 0;
+            z-index: 1000;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+            background: rgba(5, 5, 7, 0.7);
+            border-bottom: 1px solid var(--border);
+        }
+        nav { display: flex; justify-content: space-between; align-items: center; }
+        .logo { font-size: 1.5rem; font-weight: 800; color: var(--accent); text-transform: uppercase; letter-spacing: 2px; }
+        .logo span { color: var(--primary); }
+
+        /* --- 5. HERO SECTION --- */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            padding-top: 80px;
+        }
+        .hero h1 { font-size: 4rem; margin-bottom: 24px; font-weight: 800; }
+        .hero p { font-size: 1.25rem; color: var(--text-gray); margin-bottom: 40px; max-width: 600px; margin-left: auto; margin-right: auto; }
+        
+        /* Badge "Disponível" */
+        .badge {
+            display: inline-flex;
+            align-items: center;
+            padding: 8px 16px;
+            background: rgba(91, 108, 249, 0.1);
+            border: 1px solid rgba(91, 108, 249, 0.3);
+            border-radius: 50px;
+            color: #8fa0ff;
+            font-size: 0.85rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+        }
+        .dot { width: 8px; height: 8px; background: #22c55e; border-radius: 50%; margin-right: 8px; box-shadow: 0 0 10px #22c55e; }
+
+        /* --- 6. DIFERENCIAIS (GRID) --- */
+        .features { padding: 100px 0; }
+        .grid-3 {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 30px;
+            margin-top: 60px;
+        }
+        .card {
+            background: var(--glass);
+            border: 1px solid var(--border);
+            padding: 40px;
+            border-radius: 20px;
+            transition: 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+        .card:hover {
+            border-color: var(--primary);
+            transform: translateY(-10px);
+            background: rgba(255, 255, 255, 0.05);
+        }
+        .card h3 { font-size: 1.5rem; margin-bottom: 15px; }
+        .card p { color: var(--text-gray); font-size: 1rem; }
+        .icon-box {
+            font-size: 2rem;
+            margin-bottom: 20px;
+            display: inline-block;
+            background: var(--gradient);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        /* --- 7. PORTFOLIO SHOWCASE --- */
+        .showcase { padding: 100px 0; position: relative; }
+        .showcase-container {
+            background: var(--bg-card);
+            border-radius: 30px;
+            border: 1px solid var(--border);
+            padding: 60px;
+            text-align: center;
+            overflow: hidden;
+        }
+        .mockup {
+            margin-top: 50px;
+            border-radius: 10px;
+            box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+            border: 1px solid var(--border);
+            transition: 0.5s;
+            width: 100%;
+            max-width: 800px;
+        }
+        .mockup:hover { transform: scale(1.02); }
+
+        /* --- 8. PREÇO / CTA --- */
+        .pricing { padding: 80px 0 120px; text-align: center; }
+        .price-box {
+            background: linear-gradient(180deg, rgba(20,20,30,0.8) 0%, rgba(5,5,7,1) 100%);
+            border: 1px solid var(--border);
+            padding: 60px;
+            border-radius: 30px;
+            max-width: 700px;
+            margin: 0 auto;
+            position: relative;
+        }
+        .price-box::before {
+            content: '';
+            position: absolute;
+            top: -2px; left: -2px; right: -2px; bottom: -2px;
+            background: var(--gradient);
+            z-index: -1;
+            border-radius: 32px;
+            opacity: 0.3;
+        }
+        .price-value { font-size: 3.5rem; font-weight: 800; margin: 20px 0; }
+        .price-value span { font-size: 1.2rem; color: var(--text-gray); font-weight: 400; }
+
+        /* --- 9. FOOTER --- */
+        footer {
+            border-top: 1px solid var(--border);
+            padding: 40px 0;
+            text-align: center;
+            color: var(--text-gray);
+            font-size: 0.9rem;
+        }
+
+        /* --- ANIMAÇÕES (Scroll Reveal) --- */
+        .reveal {
+            opacity: 0;
+            transform: translateY(30px);
+            transition: all 0.8s ease;
+        }
+        .reveal.active {
+            opacity: 1;
+            transform: translateY(0);
+        }
+
+        /* --- MOBILE --- */
+        @media (max-width: 768px) {
+            .hero h1 { font-size: 2.5rem; }
+            .container { padding: 0 20px; }
+            .showcase-container { padding: 30px 20px; }
+            .price-box { padding: 30px 20px; }
+        }
+
+        /* --- BROWSER MOCKUP (Janela Virtual) --- */
+    .browser-window {
+        background: var(--bg-card);
+        border: 1px solid var(--border);
+        border-radius: 12px;
+        box-shadow: 0 20px 50px rgba(0,0,0,0.5);
+        overflow: hidden; /* Garante que nada vaze das bordas arredondadas */
+        max-width: 900px;
+        margin: 0 auto; /* Centraliza */
+        transition: transform 0.3s ease;
+    }
+    
+    .browser-window:hover {
+        border-color: var(--primary); /* Brilha a borda quando passa o mouse */
+        transform: translateY(-5px);
+    }
+
+    /* A barra superior do navegador (onde ficam as bolinhas) */
+    .browser-header {
+        background: rgba(255, 255, 255, 0.05);
+        padding: 12px 20px;
+        display: flex;
+        align-items: center;
+        gap: 8px;
+        border-bottom: 1px solid var(--border);
+    }
+
+    /* As bolinhas (Macbook Style) */
+    .dot { width: 12px; height: 12px; border-radius: 50%; }
+    .dot-red { background: #ff5f56; }
+    .dot-yellow { background: #ffbd2e; }
+    .dot-green { background: #27c93f; }
+    
+    /* O endereço fictício (Opcional, dá um charme) */
+    .address-bar {
+        background: rgba(0, 0, 0, 0.3);
+        flex: 1;
+        margin-left: 15px;
+        border-radius: 5px;
+        height: 10px; /* Apenas uma linha visual */
+    }
+
+    /* A tela onde vai a imagem (Com Scroll) */
+    .window-screen {
+        height: 500px; /* AQUI VOCÊ CONTROLA A ALTURA MÁXIMA */
+        overflow-y: auto; /* Habilita o scroll apenas aqui */
+        background-color: #fff; /* Fundo branco caso a imagem demore a carregar */
+        position: relative;
+    }
+
+    /* A imagem dentro da tela */
+    .window-screen img {
+        width: 100%;
+        display: block;
+        height: auto;
+    }
+
+    /* --- PERSONALIZAÇÃO DA BARRA DE ROLAGEM (Scrollbar) --- */
+    /* Funciona no Chrome, Edge e Safari */
+    .window-screen::-webkit-scrollbar { width: 8px; }
+    .window-screen::-webkit-scrollbar-track { background: #1a1a1a; }
+    .window-screen::-webkit-scrollbar-thumb { 
+        background: #333; 
+        border-radius: 4px; 
+    }
+    .window-screen::-webkit-scrollbar-thumb:hover { background: var(--primary); }
+    </style>
+</head>
+<body>
+
+    <header>
+        <div class="container">
+            <nav>
+                <div class="logo">LCS<span>.PAGES</span></div>
+                <a href="https://wa.me/5511943973778" class="btn btn-outline" style="padding: 10px 20px; font-size: 0.9rem;">Falar no WhatsApp</a>
+            </nav>
+        </div>
+    </header>
+
+    <section class="hero">
+        <div class="container">
+            <div class="reveal">
+                <div class="badge"><div class="dot"></div> Agenda Aberta - 3 Vagas</div>
+                <h1>Não é apenas um site.<br>É uma <span class="text-gradient">máquina de vendas.</span></h1>
+                <p>Transformo seguidores em clientes. Landing Pages profissionais, rápidas e persuasivas para o seu negócio digital.</p>
+                <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                    <a href="#portfolio" class="btn">Ver Projetos</a>
+                    <a href="https://wa.me/5511943973778" class="btn btn-outline">Orçamento Rápido</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="features container">
+        <div class="reveal">
+            <h2 style="font-size: 2.5rem; text-align: center;">Por que você precisa disso <span class="text-gradient">agora?</span></h2>
+            <div class="grid-3">
+                <div class="card">
+                    <span class="icon-box">⚡</span>
+                    <h3>Velocidade Extrema</h3>
+                    <p>Sites lentos perdem vendas. Desenvolvo códigos otimizados que carregam instantaneamente.</p>
+                </div>
+                <div class="card">
+                    <span class="icon-box">💎</span>
+                    <h3>Design High-End</h3>
+                    <p>Saia do amadorismo. Um visual premium passa autoridade imediata e justifica cobrar mais caro pelo seu serviço.</p>
+                </div>
+                <div class="card">
+                    <span class="icon-box">🎯</span>
+                    <h3>Conversão Focada</h3>
+                    <p>Sem botões inúteis. Uma estrutura psicológica desenhada para fazer o visitante clicar no WhatsApp.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="portfolio" class="showcase container">
+        <div class="showcase-container reveal">
+            <h2 style="font-size: 2.5rem; margin-bottom: 20px;">Portfólio Recente</h2>
+            <p style="color: var(--text-gray); margin-bottom: 40px;">
+                Navegue pelo projeto abaixo. Uma estrutura validada para gerar autoridade e agendamentos.
+            </p>
+            
+            <div class="browser-window">
+                <div class="browser-header">
+                    <div class="dot dot-red"></div>
+                    <div class="dot dot-yellow"></div>
+                    <div class="dot dot-green"></div>
+                    <div class="address-bar"></div> </div>
+                
+                <div class="window-screen">
+                    <img src="printtela.png" alt="Site Dra Mariana">
+                </div>
+            </div>
+            
+            <br><br><br>
+            
+            <div style="display: flex; gap: 15px; justify-content: center; flex-wrap: wrap;">
+                <a href="https://wa.me/5511943973778" class="btn">Quero um igual</a>
+                <a href="https://landingpagedramariana.vercel.app/" target="_blank" class="btn btn-outline">Ver Tela Cheia</a>
+            </div>
+        </div>
+    </section>
+
+    <section class="pricing container">
+        <div class="price-box reveal">
+            <h2>Oferta Exclusiva de Portfólio</h2>
+            <p style="color: var(--text-gray); margin-top: 15px;">Estou selecionando novos clientes para compor meu case de sucesso.</p>
+            
+            <div class="price-value">R$ 250,00<span>/no pix</span></div>
+            
+            <ul style="list-style: none; margin-bottom: 40px; color: var(--text-gray); text-align: left; display: inline-block;">
+                <li style="margin-bottom: 10px;">✅ Landing Page One Page (Até 5 seções)</li>
+                <li style="margin-bottom: 10px;">✅ Botão de WhatsApp Flutuante</li>
+                <li style="margin-bottom: 10px;">✅ Hospedagem Vitalícia</li>
+                <li style="margin-bottom: 10px;">✅ Entrega em até 48 horas</li>
+            </ul>
+            <br>
+            <a href="https://wa.me/5511943973778?text=Olá Lucas, vi seu site e quero aproveitar a oferta de 250 reais." class="btn">Garantir Minha Vaga</a>
+            <p style="font-size: 0.8rem; color: var(--text-gray); margin-top: 20px;">*Sinal de 50% para iniciar o projeto.</p>
+        </div>
+    </section>
+
+    <footer>
+        <div class="container">
+            <p>© 2025 LCS.Pages. Todos os direitos reservados.</p>
+            <p>Desenvolvido por Lucas Landing Pages, com foco e muito café.</p>
+        </div>
+    </footer>
+
+    <script>
+        window.addEventListener('scroll', reveal);
+        
+        function reveal(){
+            var reveals = document.querySelectorAll('.reveal');
+            for(var i = 0; i < reveals.length; i++){
+                var windowheight = window.innerHeight;
+                var revealtop = reveals[i].getBoundingClientRect().top;
+                var revealpoint = 150;
+
+                if(revealtop < windowheight - revealpoint){
+                    reveals[i].classList.add('active');
+                }
+            }
+        }
+        // Ativar no carregamento também
+        reveal();
+    </script>
+
+</body>
+</html>
